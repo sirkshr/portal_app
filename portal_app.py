@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import altair as alt
@@ -28,10 +27,10 @@ def load_claims_data():
 def show_home():
     st.title("Welcome to Your Provider Portal")
     st.markdown("### Quick Access")
-    st.button("View Claims Tracker", on_click=lambda: st.session_state.update(page='Claims'))
-    st.button("View Contract Details", on_click=lambda: st.session_state.update(page='Contracts'))
-    st.button("View Invoices", on_click=lambda: st.session_state.update(page='Invoices'))
-    st.button("Update Billing Info", on_click=lambda: st.session_state.update(page='BillingInfo'))
+    st.button("View Claims Tracker", key="home_claims", on_click=lambda: st.session_state.update(page='Claims'))
+    st.button("View Contract Details", key="home_contracts", on_click=lambda: st.session_state.update(page='Contracts'))
+    st.button("View Invoices", key="home_invoices", on_click=lambda: st.session_state.update(page='Invoices'))
+    st.button("Update Billing Info", key="home_billing", on_click=lambda: st.session_state.update(page='BillingInfo'))
 
 def show_claims(provider_name):
     st.title("Claims Tracker")
@@ -97,17 +96,17 @@ def main():
                 st.error("Invalid username or password")
     else:
         st.sidebar.title("Navigation")
-        if st.sidebar.button("Home"):
+        if st.sidebar.button("Home", key="sidebar_home"):
             st.session_state.page = 'Home'
-        if st.sidebar.button("Claims Tracker"):
+        if st.sidebar.button("Claims Tracker", key="sidebar_claims"):
             st.session_state.page = 'Claims'
-        if st.sidebar.button("Contracts"):
+        if st.sidebar.button("Contracts", key="sidebar_contracts"):
             st.session_state.page = 'Contracts'
-        if st.sidebar.button("Invoices"):
+        if st.sidebar.button("Invoices", key="sidebar_invoices"):
             st.session_state.page = 'Invoices'
-        if st.sidebar.button("Update Billing Info"):
+        if st.sidebar.button("Update Billing Info", key="sidebar_billing"):
             st.session_state.page = 'BillingInfo'
-        if st.sidebar.button("Logout"):
+        if st.sidebar.button("Logout", key="sidebar_logout"):
             st.session_state.logged_in = False
             st.session_state.page = 'Home'
 
