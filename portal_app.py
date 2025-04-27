@@ -14,7 +14,8 @@ PAYMENT_PORTAL_LINK = "https://your-payment-link.com"
 # Dummy user database for login (for now)
 users = {
     "provider1": {"password": "password123", "provider_name": "Provider One"},
-    "provider2": {"password": "password456", "provider_name": "Provider Two"}
+    "provider2": {"password": "password456", "provider_name": "Provider Two"},
+    "provider3": {"password": "password456", "provider_name": "Provider Three"}
 }
 
 # -------------------
